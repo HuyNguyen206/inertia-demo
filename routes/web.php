@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->get('login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login');
 Route::middleware('guest')->post('login', [\App\Http\Controllers\Auth\LoginController::class, 'handle']);
+Route::inertia('users/blog', 'Users/Blog')->name('users.blog');
 
 Route::middleware('auth')->group(function (){
     Route::get('', [\App\Http\Controllers\UserController::class, 'index'])->name('users.index');

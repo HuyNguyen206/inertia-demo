@@ -45,8 +45,8 @@
 </template>
 
 <script setup>
-import {useForm, usePage} from "@inertiajs/inertia-vue3";
-import Button from "../Shared/Button.vue";
+import {useForm} from "@inertiajs/inertia-vue3";
+import Button from "@/Pages/Shared/Button.vue";
 
 let props = defineProps({
     editUser: Object

@@ -8,6 +8,9 @@
                 <NavLink :href="route('users.create')" v-if="auth.permissions.createUser"
                          :class="[$page.component === 'Users/Create' ? 'font-semibold text-underline': '']">Create
                 </NavLink>
+                <NavLink :href="route('users.blog')"
+                         :class="[$page.component === 'Users/Blog' ? 'font-semibold text-underline': '']">Blog
+                </NavLink>
                 <NavLink :href="route('logout')" method="post" as="button"><span
                     class="inline-block mr-2">{{ auth.user.email }}</span>Logout
                 </NavLink>

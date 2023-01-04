@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class UserController extends Controller
@@ -19,12 +19,7 @@ class UserController extends Controller
         }
 
         return Inertia::render('Users/Index', [
-            'users' => $users->paginate(5, ['id', 'name', 'email'])->through(function ($user) {
-                $user->permissions = [
-                    'editUser' => Auth::user()->can('editThisUser', $user)
-                ];
-                return $user;
-            })->withQueryString(),
+            'users' => UserResource::collection($users->paginate(5, ['id', 'name', 'email'])->withQueryString()),
             'search' => $search
         ]);
     }

@@ -19,13 +19,13 @@
             </tr>
             </tbody>
         </table>
-        <PaginationLink :links="users.links"/>
+        <PaginationLink :links="users.meta.links"/>
     </div>
 </template>
 
 <script setup>
 import {InertiaLink} from "@inertiajs/inertia-vue3";
-import PaginationLink from "../Shared/PaginationLink.vue";
+import PaginationLink from "@/Pages/Shared/PaginationLink.vue";
 import {ref, watch} from "vue";
 import {Inertia} from "@inertiajs/inertia";
 import debounce from 'lodash/debounce'
