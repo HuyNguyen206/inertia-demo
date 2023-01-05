@@ -1,21 +1,21 @@
 <template>
     <nav>
         <ul class="flex space-x-4">
-            <div v-if="auth.user">
+            <div v-if="currentUser">
                 <NavLink :href="route('users.index')"
                          :class="[$page.component === 'Users/Index' ? 'font-semibold text-underline' : '']">Index
                 </NavLink>
-                <NavLink :href="route('users.create')" v-if="auth.permissions.createUser"
+                <NavLink :href="route('users.create')" v-if="permissions.createUser"
                          :class="[$page.component === 'Users/Create' ? 'font-semibold text-underline': '']">Create
                 </NavLink>
                 <NavLink :href="route('users.blog')"
                          :class="[$page.component === 'Users/Blog' ? 'font-semibold text-underline': '']">Blog
                 </NavLink>
                 <NavLink :href="route('logout')" method="post" as="button"><span
-                    class="inline-block mr-2">{{ auth.user.email }}</span>Logout
+                    class="inline-block mr-2">{{ currentUser.email }}</span>Logout
                 </NavLink>
             </div>
-            <div v-if="!auth.user">
+            <div v-if="!currentUser">
                 <NavLink :href="route('login')" method="get">Login</NavLink>
                 <NavLink :href="route('login')" method="get">Register</NavLink>
             </div>
@@ -28,10 +28,9 @@
 
 <script setup>
 import NavLink from "../Users/NavLink.vue";
-import {computed} from "vue";
-import {usePage} from "@inertiajs/inertia-vue3";
+import {GetCurrentLoginUserData} from "@/Composables/GetCurrentLoginUserData";
 
-let auth = computed(() => usePage().props.value.auth)
+let {currentUser, permissions} = GetCurrentLoginUserData();
 </script>
 
 <style scoped>

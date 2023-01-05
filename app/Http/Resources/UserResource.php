@@ -18,7 +18,7 @@ class UserResource extends JsonResource
         return $this->only(['id', 'name']) +
             [
                 'permissions' => [
-                    'editUser' => Auth::user()->can('editThisUser', $this)
+                    'editUser' => Auth::user()->can('editThisUser', $this->resource)
                 ],
                 'email' => $this->when($this->email === 'nguyenlehuyuit@gmail.com', $this->email)
             ];

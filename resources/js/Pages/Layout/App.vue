@@ -13,10 +13,6 @@
 
 <script setup>
 import Nav from "../Shared/Nav.vue";
-import {usePage} from "@inertiajs/inertia-vue3";
-import {computed} from "vue";
-
-let user = computed(() => usePage().props.value.auth.user)
 </script>
 
 <style scoped>

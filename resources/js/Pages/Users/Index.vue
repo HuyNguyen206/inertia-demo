@@ -29,11 +29,13 @@ import PaginationLink from "@/Pages/Shared/PaginationLink.vue";
 import {ref, watch} from "vue";
 import {Inertia} from "@inertiajs/inertia";
 import debounce from 'lodash/debounce'
+
 let props = defineProps({
     name: String,
     users: Object,
     search: String
 })
+
 
 let search = ref(props.search)
 watch(search, debounce(function (value){
